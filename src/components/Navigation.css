@@ -1,0 +1,102 @@
+.container {
+  background: #22668f !important;
+  height: auto !important;
+}
+
+.main {
+  height: 100% !important;
+  padding: 0px 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important; /* Căn đều nội dung */
+}
+
+.box-logo {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important; /* Không để logo thu nhỏ */
+}
+
+.Logo {
+  height: 30% !important;
+  max-width: 100% !important; /* Đảm bảo logo không vượt quá chiều rộng */
+}
+
+.title {
+  font-size: 16px !important;
+  margin-left: 12px !important;
+  color: white !important;
+  white-space: nowrap !important; /* Tránh chữ bị ngắt dòng */
+}
+
+.navigation {
+  width: 100% !important;
+}
+
+.navigation ul {
+  display: flex !important;
+  justify-content: space-around !important; /* Căn đều giữa các mục */
+  flex-wrap: wrap; /* Đảm bảo các mục xuống dòng nếu không đủ chỗ */
+  padding: 0;
+  margin-left: 3rem;
+  align-items: center;
+}
+
+.navigation ul li {
+  list-style: none;
+  margin: 10px 0;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all ease-in-out 0.5s;
+}
+
+.navigation ul li a:hover {
+  color: #ccc;
+}
+
+/* Media Queries cho các màn hình nhỏ */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column; /* Chuyển đổi sang dạng cột */
+    align-items: center;
+    flex-wrap: wrap; /* Giúp phần tử xuống dòng khi màn hình nhỏ */
+  }
+
+  .title {
+    font-size: 18px;
+    margin-left: 0; /* Xóa khoảng cách trái trên màn hình nhỏ */
+  }
+
+  .navigation ul {
+    justify-content: center; /* Đảm bảo các mục căn giữa trên màn hình nhỏ */
+  }
+
+  .navigation ul li a {
+    font-size: 14px; /* Giảm kích thước chữ */
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 16px; /* Kích thước nhỏ hơn cho tiêu đề */
+  }
+
+  .navigation ul li a {
+    font-size: 12px; /* Kích thước nhỏ hơn cho menu */
+  }
+}
+
+#fade-menu .menu-item {
+  font-weight: bold;
+  transition: all ease-in-out 0.3s;
+  color: #22668f;
+}
+#fade-menu .menu-item:hover {
+  color: #1d7fbc;
+}
