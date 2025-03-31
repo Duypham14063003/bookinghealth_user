@@ -22,23 +22,31 @@ import headerbg from "../../images/header-bg.png";
 const newsImages = [news1, news2, news3, news4, news5];
 
 const TrangChu = () => {
+
+//   //State	Kiểu dữ liệu	Chức năng
+// open	boolean	Xác định Snackbar có mở hay không
+// snackbarMessage	string	Nội dung của Snackbar
+// snackbarSeverity	string	Kiểu thông báo (success, error, warning, info)
+// currentSlide	number	Chỉ số slide hiện tại của carousel
+
   const navigate = useNavigate(); // Khởi tạo navigate
-  const [open, setOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [open, setOpen] = useState(false); //Kiểm soát hiển thị Snackbar //Dùng để: Xác định Snackbar (thông báo) có đang mở không. // Mặc định: false (ẩn thông báo).
+  const [snackbarMessage, setSnackbarMessage] = useState(""); //Dùng để: Lưu nội dung của Snackbar. //Mặc định: "" (chuỗi rỗng). //Khi cần hiển thị thông báo: setSnackbarMessage("Đăng nhập thành công!");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success"); //Dùng để: Xác định loại thông báo (success, error, warning, info).
+  const [currentSlide, setCurrentSlide] = useState(0); //Dùng để: Lưu trạng thái slide hiện tại trong slider/carousel. //Mặc định: 0 (hiển thị slide đầu tiên).
   const slidesToShow = 3; // Number of slides to show at once
 
   useEffect(() => {
-    const isLoginSuccess = localStorage.getItem("loginSuccess");
-
-    if (isLoginSuccess === "true") {
+    const isLoginSuccess = Boolean(localStorage.getItem("loginSuccess"));
+  
+    if (isLoginSuccess) {
       setSnackbarMessage("Đăng nhập thành công!");
       setSnackbarSeverity("success");
-      setOpen(true);
+      setOpen(true); //Khi muốn hiển thị Snackbar: setOpen(true);
       localStorage.removeItem("loginSuccess");
     }
   }, []);
+  
 
   const handleClose = () => {
     setOpen(false);
