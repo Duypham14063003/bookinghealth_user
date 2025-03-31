@@ -42,14 +42,11 @@ const LichHenKham = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(
-        "https://backend-datkhambenh.onrender.com/user/xemlichkham",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.get("http://localhost:8080/user/xemlichkham", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setName(res.data.TenBN);
       setAppointments(res.data.lichkham);
       // console.log(appointments);

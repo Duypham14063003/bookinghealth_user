@@ -161,7 +161,6 @@
 
 // export default TaiKhoanUpdate;
 
-
 import React, { useEffect, useState } from "react";
 import "./TaiKhoanUpdate.css";
 import { useNavigate } from "react-router-dom";
@@ -190,7 +189,9 @@ function TaiKhoanUpdate() {
       const res = await axiosInstance.get("/user/me");
       setUser(userAdapter(res.data.data)); // Áp dụng adapter
     } catch (error) {
-      setSnackbarMessage(error.response?.data?.message || "Lỗi khi tải dữ liệu");
+      setSnackbarMessage(
+        error.response?.data?.message || "Lỗi khi tải dữ liệu"
+      );
       setSnackbarSeverity("error");
       setOpen(true);
     }
@@ -203,7 +204,7 @@ function TaiKhoanUpdate() {
   const handleSave = async () => {
     try {
       const res = await axios.put(
-        "https://backend-datkhambenh.onrender.com/user/updateMyAccountInfo",
+        "http://localhost:8080/user/updateMyAccountInfo",
         { username: user.name },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -221,7 +222,12 @@ function TaiKhoanUpdate() {
 
   return (
     <div className="profile-container">
-      <Notifications isOpen={open} message={snackbarMessage} status={snackbarSeverity} handleClose={handleClose} />
+      <Notifications
+        isOpen={open}
+        message={snackbarMessage}
+        status={snackbarSeverity}
+        handleClose={handleClose}
+      />
       <div className="content">
         <h2 className="account-title">THÔNG TIN TÀI KHOẢN</h2>
         <div className="personal-info">
@@ -231,7 +237,12 @@ function TaiKhoanUpdate() {
               <h3>{user.name}</h3>
             </div>
             <div className="chinhsua">
-              <h5 className="lb_chinhsua" onClick={() => setStatusChinhSua(true)}>Chỉnh sửa</h5>
+              <h5
+                className="lb_chinhsua"
+                onClick={() => setStatusChinhSua(true)}
+              >
+                Chỉnh sửa
+              </h5>
               <CreateIcon />
             </div>
           </div>
@@ -239,7 +250,12 @@ function TaiKhoanUpdate() {
             <div className="info-item">
               <label className="label">Họ và tên</label>
               {statusChinhsua ? (
-                <input type="text" className="value" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} />
+                <input
+                  type="text"
+                  className="value"
+                  value={user.name}
+                  onChange={(e) => setUser({ ...user, name: e.target.value })}
+                />
               ) : (
                 <p>{user.name}</p>
               )}
@@ -254,8 +270,15 @@ function TaiKhoanUpdate() {
         </div>
         {statusChinhsua && (
           <div className="button-container">
-            <button className="cancel-button" onClick={() => setStatusChinhSua(false)}>Hủy</button>
-            <button className="save-button" onClick={handleSave}>Lưu thay đổi</button>
+            <button
+              className="cancel-button"
+              onClick={() => setStatusChinhSua(false)}
+            >
+              Hủy
+            </button>
+            <button className="save-button" onClick={handleSave}>
+              Lưu thay đổi
+            </button>
           </div>
         )}
       </div>
@@ -264,4 +287,3 @@ function TaiKhoanUpdate() {
 }
 
 export default TaiKhoanUpdate;
-
